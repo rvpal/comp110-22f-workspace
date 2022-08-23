@@ -1,20 +1,20 @@
-"""Exercise 01: A simple version of Wordle - Chardle"""
+"""Exercise 01: A simple version of Wordle - Chardle."""
 
 __author__ = "730471791"
 
-word = str(input("Enter a 5-character word: "))
+word: str = str(input("Enter a 5-character word: "))
 if len(word) != 5:
     print("Error: Word must contain 5 characters")
     exit()
 
-char = str(input("Enter a single character: "))
+char: str = str(input("Enter a single character: "))
 if len(char) != 1:
     print("Error: Character must be a single character")
     exit()
 
 print("Searching for " + char + " in " + word)
 
-total = 0
+total: int = 0
 
 if char == word[0]:
     print(char + " found at index 0")
