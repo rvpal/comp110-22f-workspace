@@ -2,14 +2,14 @@
 
 __author__ = "730471791"
 
-secret: str = "python"
+secret: str = "python is cool"
 WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
 
-guess: str = input("What is your 6 letter guess? ")
-while len(guess) != 6:
-    guess = input("That was not 6 letters! Try again: ")
+guess: str = input(f"What is your {len(secret)} letter guess? ")
+while len(guess) != len(secret):
+    guess = input(f"That was not {len(secret)} letters! Try again: ")
 
 string: str = ""
 i: int = 0
@@ -29,7 +29,7 @@ while i < len(guess):
     i = i + 1
 
 print(string)
-if string == GREEN_BOX * 6:
+if string == GREEN_BOX * len(secret):
     print("Woo! You got it!")
 else:
     print("Not quite. Play again soon!")
