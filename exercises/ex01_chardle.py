@@ -2,6 +2,9 @@
 
 __author__ = "730471791"
 
+from ssl import SSLObject
+
+
 word: str = str(input("Enter a 5-character word: "))
 if len(word) != 5:
     print("Error: Word must contain 5 characters")
