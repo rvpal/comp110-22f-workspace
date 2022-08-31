@@ -1,4 +1,4 @@
-"""A document for test functions that I can recycle in other files."""
+"""A document to test functions that I can recycle in other files."""
 
 # Function 1: Type Check
 def type_check(choice_list: list) -> int:
