@@ -2,7 +2,7 @@
 
 __author__ = "730471791"
 
-secret: str = "python is cool"
+secret: str = "cool"
 WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
