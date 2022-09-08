@@ -2,12 +2,10 @@
 
 __author__ = "730471791"
 
-from re import L
-
-
 WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
+
 
 def contains_char(initial_string: str, comparison_char: str) -> bool:
     """Returns True if the comparison character is found at any index of the initial string, and returns False otherwise."""
@@ -18,6 +16,7 @@ def contains_char(initial_string: str, comparison_char: str) -> bool:
             return True
         i += 1
     return False
+
 
 def emojified(guess: str, secret: str) -> str:
     """Return a string of emoji whose color indicates the accuracy of the users guess."""
@@ -34,29 +33,33 @@ def emojified(guess: str, secret: str) -> str:
         counter += 1
     return emoji_string
 
+
 def input_guess(expected_length: int) -> str:
     """Returns the users guess with the proper length."""
     user_guess: str = input(f"Enter a {expected_length} character word: ")
     while len(user_guess) != expected_length:
-        user_guess = input(f"That was not {expected_length} chars! Try again: ")
+        user_guess = input(f"That wasn't {expected_length} chars! Try again: ")
     return user_guess
+
 
 def main() -> None:
     """The entry point of the program and main game loop."""
     secret_word: str = "codes"
     turn: int = 1
     has_won: bool = False
-    while turn <= 6 and has_won == False:
-        print(f"=== {turn}/6 ===")
+    while turn <= 6 and not has_won:
+        print(f"=== Turn {turn}/6 ===")
         current_state: str = emojified(input_guess(len(secret_word)), secret_word)
         print(current_state)
         if current_state == GREEN_BOX * len(secret_word):
             has_won = True
-            print(f"You won in {turn}/6 turns!")
         else:
             turn += 1
-    if turn > 6:
+    if has_won:
+        print(f"You won in {turn}/6 turns!")
+    else:
         print("X/6 - Sorry, try again tomorrow!")
+
 
 if __name__ == "__main__":
     main()
