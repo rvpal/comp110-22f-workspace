@@ -16,10 +16,10 @@ def type_check(choice_list: list) -> int:
             return selection
         else:
             print("Choose a valid choice!")
-            type_check(choice_list)
+            return type_check(choice_list)
     except ValueError:
         print("Please enter an integer!")
-        type_check(choice_list)
+        return type_check(choice_list)
 
 choice = type_check(["1. Option 1", "2. Option 2", "3. Option 3", "4. Option 4"])
 print(choice)
