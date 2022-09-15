@@ -38,4 +38,3 @@ def is_equal(first_list: list[int], second_list: list[int]) -> bool:
             return False
         i += 1
     return True
-
