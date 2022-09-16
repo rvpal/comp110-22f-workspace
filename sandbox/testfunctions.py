@@ -1,6 +1,6 @@
 """A document to test functions that I can recycle in other files."""
 
-# Function 1: Type Check
+
 def type_check(choice_list: list) -> int:
     """A function to ensure that the user inputs an integer within correct bounds."""
     number_of_options: int = 0
@@ -20,6 +20,7 @@ def type_check(choice_list: list) -> int:
     except ValueError:
         print("Please enter an integer!")
         return type_check(choice_list)
+
 
 choice = type_check(["1. Option 1", "2. Option 2", "3. Option 3", "4. Option 4"])
 print(choice)
