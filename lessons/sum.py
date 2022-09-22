@@ -9,3 +9,5 @@ def sum(xs: list[float]) -> float:
         total += xs[i]
         i += 1
     return total
+
+# proof that this isn't the video
