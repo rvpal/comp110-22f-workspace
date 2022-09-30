@@ -16,10 +16,9 @@ cat_relaxed: bool = False
 
 
 def reward(change: int) -> None:
-    """Updates the player on their points."""
+    """Updates and informs the player of their points."""
     print(BLANK_LINE)
     global points
-    print(points)
     points += change
     if change < 0:
         print(MINUS_POINTS)
@@ -45,7 +44,7 @@ def greet() -> None:
     print("Isn't it adorable? No, don't knock that glass of milk over! Ugh. Have fun...")
     
 
-def feed() -> None:
+def feed() -> None:  # This is my procedure. The reward function reassigns the points variable. 
     """Allows player to feed the cat if they have premium cat food and have cleaned the milk."""
     global points
     global cat_relaxed
@@ -78,7 +77,7 @@ def feed() -> None:
                 reward(50)
             else:
                 print("You do not have the premium cat food!")
-                print(f"You cannot feed what you cannot have... {player}, I'm disappointed.")
+                print(f"You cannot feed what you do not have... {player}, I'm disappointed.")
                 reward(-20)
     else:
         print("You have not cleaned the spilled milk!")
@@ -87,26 +86,42 @@ def feed() -> None:
         reward(-20)
 
 
-def pet(points: int) -> int:
+def pet(x: int) -> int:  # This is my custom function. It returns the new point total and reassigns it to the points variable. 
     """Passes points and changes them."""
     global cat_relaxed
     print(BLANK_LINE)
+    chosen: bool = False
+    while not chosen:
+        print("Are you sure you want to pet the cat?")
+        print("1. Yes, let me pet the cat.")
+        print("2. Hm... No, I think this is a mistake.")
+        selection = input("Select a response: ")
+        if selection == "1" or selection == "2":
+            chosen = True
+        else:
+            print("Please enter a valid choice.")
+    if selection == "1":
+        print(BLANK_LINE)
+        print("You attempt to pet the cat...")
+    elif selection == "2":
+        print("You believe that it is too early to pet the cat and back away slowly.")
+        return x
     if cat_relaxed:
         print("You pet the cat and successfully make it fall asleep.")
         print(REWARD_SYMBOL)
         print("You have gained 30 skill.")
-        print(f"Your cat skill-rating is {points + 30}.")
+        print(f"Your cat skill-rating is {x + 30}.")
         print(REWARD_SYMBOL)
         reset()
-        return points + 30
+        return x + 30
     else:
         print(f"The cat is too energetic at the moment, {player}. You will need to fix that first.")
         print("I'm afraid this reflects poorly on your skill.")
-        print(REWARD_SYMBOL)
+        print(MINUS_POINTS)
         print("You have lost 30 skill.")
-        print(f"Your cat skill-rating is {points - 30}.")
-        print(REWARD_SYMBOL)
-        return points - 30
+        print(f"Your cat skill-rating is {x - 30}.")
+        print(MINUS_POINTS)
+        return x - 30
         
         
 def reset() -> None:
@@ -159,7 +174,8 @@ def store() -> bool:
                 reward(-10)
                 print("Perhaps you should work at the restaurant.")
             chosen = False
-        elif selection == "2":    
+        elif selection == "2":
+            print(BLANK_LINE)
             print("You leave the store and go work a four hour shift at some random restaurant.")
             print(f"This, {player}, is quite smart. With the labor shortage it is easy to find a job.")
             print("All you need are good tips and hopefully you can make some money.")
@@ -181,6 +197,8 @@ def clean() -> bool:
 
 def main() -> None:
     """The entry point of the game."""
+    global player
+    player = ""
     greet()
     global points
     points = 0
@@ -194,6 +212,7 @@ def main() -> None:
         chosen: bool = False
         while not chosen:
             print(BLANK_LINE)
+            print("What do you want to do?")
             if not cat_relaxed:
                 print("1. Feed the cat.")
             print("2. Pet the cat.")
@@ -202,7 +221,7 @@ def main() -> None:
             if not cleaned_milk:
                 print("4. Clean the milk.")
             print("5. Quit Game.")
-            selection = input("What do you want to do? Enter a number: ")
+            selection = input("Enter a number: ")
             if (selection == "1" and not cat_relaxed) or selection == "2" or (selection == "3" and not has_cat_food) or (selection == "4" and not cleaned_milk) or selection == "5":
                 chosen = True
             else:
