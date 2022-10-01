@@ -180,8 +180,9 @@ def store() -> bool:
             print(f"This, {player}, is quite smart. With the labor shortage it is easy to find a job.")
             print("All you need are good tips and hopefully you can make some money.")
             print("YOU WORK A FOUR HOUR SHIFT")
-            money += randint(40, 50)
-            print(f"You earned 40 dollars from working and {money - 40} in tips.")
+            tips: int = randint(0, 10)
+            money += 40
+            print(f"You earned 40 dollars from working and {tips} in tips.")
             print(f"You now have {money} dollars!")
             print("You may need to work another shift...")
             reward(5)

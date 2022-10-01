@@ -6,7 +6,7 @@ def type_check(choice_list: list) -> int:
     number_of_options: int = 0
     for i in choice_list:
         print(i)
-        number_of_options = number_of_options + 1
+        number_of_options += 1
     selection: str = input("Select the number of your choice, or type 'quit' to exit the program: ")
     if selection == "quit":
         exit()
