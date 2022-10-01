@@ -9,6 +9,7 @@ player: str
 CAT: str = "\U0001F63E"
 REWARD_SYMBOL: str = "\U0001F389"
 MINUS_POINTS: str = "\U0001F4DB"
+RED_CIRCLE: str = "\U00002B55"
 BLANK_LINE: str = "=================================================================="
 has_cat_food: bool = False
 cleaned_milk: bool = False
@@ -44,9 +45,8 @@ def greet() -> None:
     print("Isn't it adorable? No, don't knock that glass of milk over! Ugh. Have fun...")
     
 
-def feed() -> None:  # This is my procedure. The reward function reassigns the points variable. 
+def feed() -> None:  # This is my procedure. The reward procedure called by feed() reassigns the points global variable. 
     """Allows player to feed the cat if they have premium cat food and have cleaned the milk."""
-    global points
     global cat_relaxed
     print(BLANK_LINE)
     print("You try to feed the cat.")
@@ -133,6 +133,7 @@ def reset() -> None:
     has_cat_food = False
     cat_relaxed = False
     cleaned_milk = False
+    print(REWARD_SYMBOL * 40)
     print(f"I must say, {player}, you have exceeded my expectations.")
     print(f"And keep in mind, you finished with a skill level of {points}, so that tells you what my expectations for you were...")
     print("Now, I have an unlimited supply of cats, so if you want your score to be even better, then you can keep playing!")
@@ -140,6 +141,8 @@ def reset() -> None:
     print(CAT)
     print(f"Golly, {player}! The cat has already knocked over another glass of milk.")
     print("Better get to it!")
+    print(REWARD_SYMBOL * 40)
+    print(BLANK_LINE)
     input("Press enter to restart the game (you'll keep your skill-rating, though).")
     print(BLANK_LINE)
 
@@ -164,6 +167,7 @@ def store() -> bool:
         if selection == "1":
             if money >= 100:
                 print("You successfully buy the premium cat food.")
+                print(f"{RED_CIRCLE}You've spent all of your {money} dollars on it! {RED_CIRCLE}")
                 print(f"{player}: Why was it so expensive!?!?!")
                 print("Now now, you need a positive attitude if you want to take care of a cat.")
                 reward(25)
@@ -181,7 +185,7 @@ def store() -> bool:
             print("All you need are good tips and hopefully you can make some money.")
             print("YOU WORK A FOUR HOUR SHIFT")
             tips: int = randint(0, 10)
-            money += 40
+            money += 40 + tips
             print(f"You earned 40 dollars from working and {tips} in tips.")
             print(f"You now have {money} dollars!")
             print("You may need to work another shift...")
