@@ -56,7 +56,7 @@ def feed() -> None:  # This is my procedure. The reward procedure called by feed
             print(BLANK_LINE)
             print("1. Feed the cat plain cat food.")
             print("2. Feed the cat premium cat food.")
-            selection = input("What do you want to do? Enter a number: ")
+            selection: str = input("What do you want to do? Enter a number: ")
             if selection == "1" or selection == "2":
                 chosen = True
             else:
@@ -95,7 +95,7 @@ def pet(x: int) -> int:  # This is my custom function. It returns the new point 
         print("Are you sure you want to pet the cat?")
         print("1. Yes, let me pet the cat.")
         print("2. Hm... No, I think this is a mistake.")
-        selection = input("Select a response: ")
+        selection: str = input("Select a response: ")
         if selection == "1" or selection == "2":
             chosen = True
         else:
@@ -135,7 +135,7 @@ def reset() -> None:
     cleaned_milk = False
     print(REWARD_SYMBOL * 40)
     print(f"I must say, {player}, you have exceeded my expectations.")
-    print(f"And keep in mind, you finished with a skill level of {points}, so that tells you what my expectations for you were...")
+    print(f"And keep in mind, you finished with a skill level of {points + 30}, so that tells you what my expectations for you were...")
     print("Now, I have an unlimited supply of cats, so if you want your score to be even better, then you can keep playing!")
     print("Here is another cat:")
     print(CAT)
@@ -159,7 +159,7 @@ def store() -> bool:
             print(BLANK_LINE)
             print("1. Buy premium cat food.")
             print("2. Work at the restaurant.")
-            selection = input("What do you want to do? Enter a number: ")
+            selection: str = input("What do you want to do? Enter a number: ")
             if selection == "1" or selection == "2":
                 chosen = True
             else:
@@ -184,7 +184,7 @@ def store() -> bool:
             print(f"This, {player}, is quite smart. With the labor shortage it is easy to find a job.")
             print("All you need are good tips and hopefully you can make some money.")
             print("YOU WORK A FOUR HOUR SHIFT")
-            tips: int = randint(0, 10)
+            tips: int = randint(0, 15)
             money += 40 + tips
             print(f"You earned 40 dollars from working and {tips} in tips.")
             print(f"You now have {money} dollars!")
