@@ -48,6 +48,9 @@ def greet() -> None:
 def feed() -> None:  # This is my procedure. The reward procedure called by feed() reassigns the points global variable. 
     """Allows player to feed the cat if they have premium cat food and have cleaned the milk."""
     global cat_relaxed
+    global cleaned_milk
+    global has_cat_food
+    global cat_relaxed
     print(BLANK_LINE)
     print("You try to feed the cat.")
     if cleaned_milk:
