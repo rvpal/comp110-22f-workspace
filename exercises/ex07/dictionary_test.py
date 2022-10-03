@@ -98,5 +98,5 @@ def test_count_case_one() -> None:
 
 def test_count_case_two() -> None:
     """Tests another edge case for sub."""
-    xs: list[str] = {"Bob"}
+    xs: list[str] = ["Bob"]
     assert count(xs) == {"Bob": 1}

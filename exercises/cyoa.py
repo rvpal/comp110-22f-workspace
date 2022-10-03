@@ -194,6 +194,7 @@ def store() -> bool:
             print("You may need to work another shift...")
             reward(5)
             chosen = False
+    return False
 
 
 def clean() -> bool:

@@ -24,3 +24,6 @@ def type_check(choice_list: list) -> int:
 
 choice = type_check(["1. Option 1", "2. Option 2", "3. Option 3", "4. Option 4"])
 print(choice)
+
+# Useful commands:
+# python -m mypy exercises/<FILE_NAME.py>
