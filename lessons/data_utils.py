@@ -5,7 +5,7 @@ from csv import DictReader
 
 def read_csv_rows(filename: str) -> list[dict[str, str]]:
     """Read the rows of a CSV into a 'table'."""
-    result: list[dict[str,str]] = list()
+    result: list[dict[str, str]] = list()
     
     # Open the file. 
     file_handle = open(filename, "r", encoding="utf8")
