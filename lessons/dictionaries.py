@@ -48,3 +48,23 @@ for key in schools:
 
 for school in schools:
     print(f"Key: {school} -> Value: {schools[school]}")
+
+
+# Compound data types with dictionaries and lists.
+rows: list[dict[str, int]] = [
+    {"hi": 76, "lo": 51},
+    {"hi": 77, "lo": 53}
+]
+
+low: dict[str, int] = rows[1]
+
+print(rows)
+print(low)
+
+print("Now modifying low...")
+low["hi"] = 50
+print("Here is the new low...")
+print(low)
+print("Has it affected rows?")
+print(rows)
+# We can get a variable assigned to a list within a dictionary or a dictionary within a list directly. 
