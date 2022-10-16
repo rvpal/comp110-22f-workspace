@@ -22,8 +22,20 @@ def type_check(choice_list: list) -> int:
         return type_check(choice_list)
 
 
-choice = type_check(["1. Option 1", "2. Option 2", "3. Option 3", "4. Option 4"])
-print(choice)
+def odd_and_even(a: list[int]) -> list[int]:
+    """Returns a list of odd numbers from even indices of a list."""
+    result: list[int] = list()
+    for i in range(0, len(a), 2):
+        if a[i] % 2 == 1:
+            result.append(a[i])
+    return result
+
+
+# print(odd_and_even([2, 9, 4, 17, 9, 10, 15, 13, 14, 21]))
+# print(odd_and_even([1, 1, 1, 0, 1]))
+
+# choice = type_check(["1. Option 1", "2. Option 2", "3. Option 3", "4. Option 4"])
+# print(choice)
 
 # Useful commands:
 # python -m mypy exercises/<FILE_NAME.py>
