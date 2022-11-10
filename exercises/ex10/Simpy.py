@@ -36,3 +36,70 @@ class Simpy:
             while start > stop:
                 self.values.append(start)
                 start += step
+
+    def sum(self) -> float:
+        """Adds up the items in the values attribute."""
+        result: float = 0.0
+        for i in self.values:
+            result += i
+        return result
+
+    def __add__(self, rhs: Union[float, Simpy]) -> Simpy:
+        """Overloads the add operator."""
+        result: Simpy = Simpy([])
+        if isinstance(rhs, Simpy):
+            assert len(self.values) == len(rhs.values)
+            for i in range(len(self.values)):
+                result.values.append(self.values[i] + rhs.values[i])
+        elif isinstance(rhs, float):
+            for i in range(len(self.values)):
+                result.values.append(self.values[i] + rhs)
+        return result
+
+    def __pow__(self, rhs: Union[float, Simpy]) -> Simpy:
+        """Overloads the power operator."""
+        result: Simpy = Simpy([])
+        if isinstance(rhs, Simpy):
+            assert len(self.values) == len(rhs.values)
+            for i in range(len(self.values)):
+                result.values.append(self.values[i] ** rhs.values[i])
+        elif isinstance(rhs, float):
+            for i in range(len(self.values)):
+                result.values.append(self.values[i] ** rhs)
+        return result
+
+    def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Overloads the equality operator."""
+        result: list[bool] = []
+        if isinstance(rhs, Simpy):
+            assert len(self.values) == len(rhs.values)
+            for i in range(len(self.values)):
+                result.append(self.values[i] == rhs.values[i])
+        elif isinstance(rhs, float):
+            for i in range(len(self.values)):
+                result.append(self.values[i] == rhs)
+        return result
+
+    def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Overloads the greater than operator."""
+        result: list[bool] = []
+        if isinstance(rhs, Simpy):
+            assert len(self.values) == len(rhs.values)
+            for i in range(len(self.values)):
+                result.append(self.values[i] > rhs.values[i])
+        elif isinstance(rhs, float):
+            for i in range(len(self.values)):
+                result.append(self.values[i] > rhs)
+        return result
+
+    def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
+        """Overloads the subscription operator."""
+        if isinstance(rhs, int):
+            return self.values[rhs]
+        elif isinstance(rhs, list):
+            assert len(rhs) == len(self.values)
+            result: Simpy = Simpy([])
+            for i in range(len(self.values)):
+                if rhs[i]:
+                    result.values.append(self.values[i])
+            return result
