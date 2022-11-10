@@ -7,9 +7,10 @@ __author__ = "730471791"
 
 
 class Simpy:
+    """A class!"""
     values: list[float]
 
-    def __init__(self, values: list):
+    def __init__(self, values: list[float]):
         """Constructor function for Simpy class."""
         self.values = values
 
